@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-service-green
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: app-service
+      version: green
+  template:
+    metadata: 
+      labels:
+        app: app-service
+        version: green
+    spec:
+      containers:
+       - name: app-service
+         image: "{{ .Values.image.repository }}:{{ .Values.green.greenTag }}"
+         ports:
+           - containerPort: {{ .Values.service.port }}
+         env:
+           - name: PORT
+             value: {{ .Values.env.port | quote }}

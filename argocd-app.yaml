@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-service-bluegreen-deployment-practice
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/sukhdeep07civil/helm-gitops-blue-green-deployment-practice.git
+    targetRevision: main
+    path: app-service
+  
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
