@@ -20,7 +20,7 @@ env:
 image:
   repository: ssm0712/helm-gitops-blue-green-deployment-practice
   # This sets the pull policy for images.
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
 
