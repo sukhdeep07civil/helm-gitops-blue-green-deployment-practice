@@ -17,6 +17,7 @@ spec:
       containers:
         - name: app-service
           image: "{{ .Values.image.repository }}:{{ .Values.blue.blueTag }}"
+          imagePullPolicy: Always
           ports:
             - containerPort: {{ .Values.service.port }}
           env:
